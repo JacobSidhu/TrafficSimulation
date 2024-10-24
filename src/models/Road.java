@@ -16,11 +16,14 @@ public class Road {
     // Class Constructor
     Road(){}
 
+    // Static class Constructor to read data from Json
+    static Road fetchData(){}
+
     // Methods
-    void addVehicleIntoRoad(){}
-    Vehicle getVehicleFromRoad(){}
-    boolean isSpaceAvailable(){}
-    
+    public void addVehicleIntoRoad(){}
+    public Vehicle getVehicleFromRoad(){}
+    public boolean isSpaceAvailable(){}
+    public boolean isEntryAllowed(){}
 
     // Setters
     public void setEntryAllowed(boolean isEntryAllowed) {
