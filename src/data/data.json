@@ -1,0 +1,210 @@
+{
+    "CarParks" : 
+    {
+        "IndustrialPark" : 
+        {
+            "spaces" : 1000
+        },
+
+        "ShoppingCentre" : 
+        {
+            "spaces" : 400
+        },
+
+        "Station" : 
+        {
+            "spaces" : 100
+        },
+
+        "Univerisity" : 
+        {
+            "spaces" : 100
+        }
+    },
+
+    "Junctions" : 
+    {
+        "numOfJunctions" : 4,
+        "JunctionA" : 
+        {
+            "totalRoadLinked" : 4,
+            "numOfEntryRoads": 2,
+            "numOfExitRoads" : 2,
+            
+            "ROAD1" : 
+            {
+                "roadName" : "MotorwaySouth_JunctionA",
+                "nextNode" : null,
+                "roadCapacity" : 60,
+                "entryAllowed" : false,
+                "Destinations" : null
+            },
+
+            "ROAD2" : 
+            {
+                "roadName" : "JunctionB_JunctionA",
+                "nextNode" : null,
+                "roadCapacity" : 7,
+                "entryAllowed" : false,
+                "Destinations" : null
+            },
+
+           "ROAD3" : 
+            {
+                "roadName" : "JunctionA_IndustrialPark",
+                "nextNode" : "IndustrialPark",
+                "roadCapacity" : 15,
+                "entryAllowed" : true,
+                "Destinations" : ["IndustrialPark"]
+            },
+
+            "ROAD4" : 
+            {
+                "roadName" : "JunctionA_JunctionB",
+                "nextNode" : "JunctionB",
+                "roadCapacity" : 7,
+                "entryAllowed" : true,
+                "Destinations" : ["Station","University","ShoppingCentre"]
+            }
+
+        },
+
+        "JunctionB" : 
+        {
+            "totalRoadLinked" : 5,
+            "numOfEntryRoads": 3,
+            "numOfExitRoads" : 2,
+            
+            "ROAD1" : 
+            {
+                "roadName" : "JunctionC_JunctionB",
+                "nextNode" : null,
+                "roadCapacity" : 10,
+                "entryAllowed" : false,
+                "Destinations" : null
+            },
+
+            "ROAD2" : 
+            {
+                "roadName" : "MotorwayEast_JunctionB",
+                "nextNode" : null,
+                "roadCapacity" : 30,
+                "entryAllowed" : false,
+                "Destinations" : null
+            },
+
+            "ROAD3" : 
+            {
+                "roadName" : "JunctionA_JunctionB",
+                "nextNode" : null,
+                "roadCapacity" : 7,
+                "entryAllowed" : false,
+                "Destinations" : null
+
+            },
+
+            "ROAD4" : 
+            {
+                "roadName" : "JunctionB_JunctionC",
+                "nextNode" : "JunctionC",
+                "roadCapacity" : 10,
+                "entryAllowed" : true,
+                "Destinations" : ["Station","University","ShoppingCentre"]
+            },
+
+            "ROAD5" : 
+            {
+                "roadName" : "JunctionB_JunctionA",
+                "nextNode" : "JunctionA",
+                "roadCapacity" : 7,
+                "entryAllowed" : true,
+                "Destinations" : ["IndustrialPark"]
+            }
+        },
+
+        "JunctionC" : 
+        {
+            "totalRoadLinked" : 5,
+            "numOfEntryRoads": 2,
+            "numOfExitRoads" : 3,
+            
+            "ROAD1" : 
+            {
+                "roadName" : "MotorwayNorth_JunctionC",
+                "nextNode" : null,
+                "roadCapacity" : 50,
+                "entryAllowed" : false,
+                "Destinations" : null
+            },
+            "ROAD2" : 
+            {
+                "roadName" : "JunctionB_JunctionC",
+                "nextNode" : null,
+                "roadCapacity" : 10,
+                "entryAllowed" : false,
+                "Destinations" : null
+            },
+
+            "ROAD3" : 
+            {
+                "roadName" : "JunctionC_JunctionD",
+                "nextNode" : "JunctionD",
+                "roadCapacity" : 10,
+                "entryAllowed" : true,
+                "Destinations" : ["Station","University"]
+            },
+
+            "ROAD4" : 
+            {
+                "roadName" : "JunctionC_JunctionB",
+                "nextNode" : "JunctionB",
+                "roadCapacity" : 10,
+                "entryAllowed" : true,
+                "Destinations" : ["IndustrialPark"]
+            },
+
+            "ROAD5" : 
+            {
+                "roadName" : "JunctionC_JunctionB",
+                "nextNode" : "ShoppingCentre",
+                "roadCapacity" : 7,
+                "entryAllowed" : true,
+                "Destinations" : ["ShoppingCentre"]
+            }
+        },
+
+        "JunctionD" : 
+        {
+            "totalRoadLinked" : 3,
+            "numOfEntryRoads": 1,
+            "numOfExitRoads" : 2,
+            
+            "ROAD1" : 
+            {
+                "roadName" : "JunctionC_JunctionD",
+                "nextNode" : null,
+                "roadCapacity" : 10,
+                "entryAllowed" : false,
+                "Destinations" : null
+            },
+
+            "ROAD2" : 
+            {
+                "roadName" : "JunctionD_University",
+                "nextNode" : "University",
+                "roadCapacity" : 15,
+                "entryAllowed" : true,
+                "Destinations" : ["University"]
+            }, 
+
+            "ROAD3" : 
+            {
+                "roadName" : "JunctionD_Station",
+                "nextNode" : "Station",
+                "roadCapacity" : 15,
+                "entryAllowed" : true,
+                "Destinations" : ["Station"]
+            }
+        }
+    }
+}
