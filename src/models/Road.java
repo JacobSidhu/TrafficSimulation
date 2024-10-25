@@ -19,7 +19,19 @@ public class Road {
     Road(){}
 
     // Static class Constructor to read data from Json
-    static Road createInstance(){}
+    static Road createInstance(String roadName,int roadCapacity,boolean isEntryAllowed, String[] destinations){
+        // Instance to return
+        Road instance = new Road();
+
+        // Assigning data to the instance
+        instance.setRoadName(roadName);
+        instance.setRoadCapacity(roadCapacity);
+        instance.setIsEntryAllowed(isEntryAllowed);
+        instance.setDestinations(destinations);
+
+        // Returning Instance
+        return instance;
+    }
 
     // Methods
     public void addVehicleIntoRoad(){}
@@ -28,7 +40,7 @@ public class Road {
     public boolean isEntryAllowed(){}
 
     // Setters
-    public void setEntryAllowed(boolean isEntryAllowed) {
+    public void setIsEntryAllowed(boolean isEntryAllowed) {
         this.isEntryAllowed = isEntryAllowed;
     }
 
@@ -72,5 +84,8 @@ public class Road {
         return roadName;
     }
 
+    public boolean getIsEntryAllowed(){
+        return this.isEntryAllowed;
+    }
 
 }
