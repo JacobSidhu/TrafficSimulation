@@ -1,5 +1,7 @@
 package models;
 
+import rough.Vehicle;
+
 // This file contains Road Class that represents blueprint for roads used in
 // in the traffic Simulation.
 
@@ -17,7 +19,7 @@ public class Road {
     Road(){}
 
     // Static class Constructor to read data from Json
-    static Road fetchData(){}
+    static Road createInstance(){}
 
     // Methods
     public void addVehicleIntoRoad(){}
