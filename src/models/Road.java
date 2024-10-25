@@ -8,9 +8,9 @@ import rough.Vehicle;
 public class Road {
 
     // Class Attributes
-    private String roadName = null;
+    private String roadName;
     private int roadCapacity;
-    private int onRoadVehicles;
+    private int onRoadVehicles = 0;
     private boolean isEntryAllowed;
     private Vehicle[] roadBuffer;
     private String[] destinations;
