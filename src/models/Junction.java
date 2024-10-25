@@ -9,7 +9,7 @@ public class Junction {
     private String junctionName;
     private Road[] linkedRoads;
 
-    static Junction createInstance(String junctionName, int totalRoadLinked, int numOfEntryRoads, int numOfExitRoads, Road[] roads){
+    public Junction createInstance(String junctionName, int totalRoadLinked, int numOfEntryRoads, int numOfExitRoads, Road[] roads){
         // Creating New Junction Instance
         Junction instance = new Junction();
         //Assigning values to the junction
