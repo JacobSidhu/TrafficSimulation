@@ -15,11 +15,8 @@ public class Road {
     private Vehicle[] roadBuffer;
     private String[] destinations;
 
-    // Class Constructor
-    Road(){}
-
     // Static class Constructor to read data from Json
-    static Road createInstance(String roadName,int roadCapacity,boolean isEntryAllowed, String[] destinations){
+    public Road createInstance(String roadName,int roadCapacity,boolean isEntryAllowed, String[] destinations){
         // Instance to return
         Road instance = new Road();
 
