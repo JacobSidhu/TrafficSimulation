@@ -17,13 +17,41 @@ public class Scenario
         Scenario instance = new Scenario();
 
         // Assigning data to instance.
-        instance.junctionsAllowence = junctionsAllowence;
-        instance.entryPointEast = entryPointEast;
-        instance.entryPointNorth = entryPointNorth;
-        instance.entryPointSouth = entryPointSouth;
+        instance.setJunctionsAllowence(junctionsAllowence);;
+        instance.setEntryPointEast(entryPointEast);;
+        instance.setEntryPointNorth(entryPointNorth);
+        instance.setEntryPointSouth(entryPointSouth);;
 
         // Returing Instance.
         return instance;
     };
+
+    // Setters
+    public void setEntryPointEast(int entryPointEast) {
+        this.entryPointEast = entryPointEast;
+    }
+    public void setEntryPointNorth(int entryPointNorth) {
+        this.entryPointNorth = entryPointNorth;
+    }
+    public void setEntryPointSouth(int entryPointSouth) {
+        this.entryPointSouth = entryPointSouth;
+    }
+    public void setJunctionsAllowence(int[] junctionsAllowence) {
+        this.junctionsAllowence = junctionsAllowence;
+    }
+
+    // Getters
+    public int getEntryPointEast() {
+        return entryPointEast;
+    }
+    public int getEntryPointNorth() {
+        return entryPointNorth;
+    }
+    public int getEntryPointSouth() {
+        return entryPointSouth;
+    }
+    public int[] getJunctionsAllowence() {
+        return junctionsAllowence;
+    }
     
 }
