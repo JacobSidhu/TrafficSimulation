@@ -1,6 +1,7 @@
 {
     "scenarios" :
     {
+        "numOfScenarios" : 5,
         "scenario1" : 
         {
             "junctions" : 
@@ -170,23 +171,28 @@
 
     "carParks" : 
     {
-        "industrialPark" : 
+        "numOfCarParks" : 4,
+        "carPark1" : 
         {
+            "carParkName" : "IndustrialPark",
             "spaces" : 1000
         },
 
-        "shoppingCentre" : 
+        "carPark2" : 
         {
+            "carParkName" : "ShoppingCentre",
             "spaces" : 400
         },
 
-        "station" : 
+        "carPark3" : 
         {
+            "carParkName" : "Station",
             "spaces" : 100
         },
 
-        "univerisity" : 
+        "carPark4" : 
         {
+            "carParkName" : "Station",
             "spaces" : 100
         }
     },
