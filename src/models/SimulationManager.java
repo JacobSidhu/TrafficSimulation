@@ -24,7 +24,12 @@ public class SimulationManager {
     private final String DATA_FILE_PATH = "src/data/data.json";
 
     // Function to start Simulation
-    public static void start(int scenario){}
+    public void start(int scenario){
+        validateScenarioInput(scenario);
+        // Printing Heading on console
+        System.out.println("\n  Simulation | Scanerio :"+  scenario+"\n");
+        loadData(scenario);
+    }
 
     // Function to clear Console
     void clearConsole(){
@@ -68,7 +73,6 @@ public class SimulationManager {
             setRunningScenario(specificScenario);
             setJunctions(allJunctions);
             setCarParks(allCarParkObject);
-            
         }
         catch (IOException | ParseException e) {
             e.printStackTrace();
