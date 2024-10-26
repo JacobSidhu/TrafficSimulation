@@ -1,5 +1,6 @@
 package models;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 //The TrafficManager class is responsible for managing the loading of data into
@@ -46,8 +47,53 @@ public class SimulationManager {
         this.carParks = carParks;
     }
 
-    void setJunctions(Junction[] junctions) {
-        this.junctions = junctions;
+    /**
+     * Initializes the junctions in the simulation using data from a JSON object.
+     *
+     * @param allJunctionObjects A JSONObject containing data for each junction. 
+     
+    * Sets up each junction with its linked roads, capacity, entry permissions, and destinations.
+    */
+    void setJunctions(JSONObject allJunctionObjects) {
+        this.junctions = new Junction[getNumOfJunctions()];
+        
+        // Fetching each junction from all Junctions object
+        for(int i=0; i<numOfJunctions; i++)
+        {
+            char junctionLetter = (char) ('A' + i);
+            String junctionName = "junction"+junctionLetter;
+            JSONObject eachJunctionObject = (JSONObject) allJunctionObjects.get(junctionName);
+            Junction tempJunction = new Junction();
+            int totalRoadLinked = ((Long) eachJunctionObject.get("totalRoadLinked")).intValue();
+            int numOfEntryRoads = ((Long) eachJunctionObject.get("numOfEntryRoads")).intValue();
+            int numOfExitRoads = ((Long) eachJunctionObject.get("numOfExitRoads")).intValue();
+            Road[] roadInstances = new Road[totalRoadLinked];
+
+            // Fetching Road data from each junction.
+            for(int x=0; x<totalRoadLinked; x++)
+            {
+                Road tempInstance = new Road();
+                String roadObjectKey = "road"+(x+1);
+                System.err.println("Here");
+                JSONObject roadObject = (JSONObject) eachJunctionObject.get(roadObjectKey);
+
+                String roadName = (String) roadObject.get("roadName");
+
+                int roadCapacity = ((Long) roadObject.get("roadCapacity")).intValue();
+                boolean isEntryAllowed = (boolean) roadObject.get("entryAllowed");
+                JSONArray destinationsArray = (JSONArray) roadObject.get("destinations");
+                String[] destinations = null;
+                if(destinationsArray!=null)
+                {
+                    destinations = new String[destinationsArray.size()];
+                    for (int j = 0; j < destinationsArray.size(); j++) {
+                        destinations[j] = (String) destinationsArray.get(j);
+                    }
+                }                
+                roadInstances[x] = tempInstance.createInstance(roadName,roadCapacity,isEntryAllowed,destinations);
+            }
+            this.junctions[i] = tempJunction.createInstance(junctionName,totalRoadLinked,numOfEntryRoads,numOfExitRoads,roadInstances);
+        }
     }
 
     /**
