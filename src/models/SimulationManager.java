@@ -61,9 +61,9 @@ public class SimulationManager {
             JSONObject allJunctions = (JSONObject) jsonObject.get("junctions");
             JSONObject allCarParkObject = (JSONObject) jsonObject.get("carParks");
             
-            setNumOfJunctions(((Long) allJunctions.get("numOfJunctions")).intValue());
-            setNumOfScenarios(((Long) allScenarios.get("numOfScenarios")).intValue());
-            setNumOfCarParks(((Long) allCarParkObject.get("numOfCarParks")).intValue());
+            this.numOfJunctions = ((Long) allJunctions.get("numOfJunctions")).intValue();
+            this.numOfScenarios = ((Long) allScenarios.get("numOfScenarios")).intValue();
+            this.numOfCarParks = ((Long) allCarParkObject.get("numOfCarParks")).intValue();
 
             setRunningScenario(specificScenario);
             setJunctions(allJunctions);
@@ -99,9 +99,9 @@ public class SimulationManager {
      */
     public void setCarParks(JSONObject allCarParkObject) {
 
-        this.carParks = new CarPark[this.getNumOfCarParks()];
+        this.carParks = new CarPark[this.numOfCarParks];
 
-        for(int i=0; i<getNumOfCarParks(); i++)
+        for(int i=0; i<this.numOfCarParks; i++)
         {
             CarPark tempInstance = new CarPark();
             JSONObject eachCarParkObject = (JSONObject) allCarParkObject.get("carPark"+(i+1));
@@ -119,7 +119,7 @@ public class SimulationManager {
     * Sets up each junction with its linked roads, capacity, entry permissions, and destinations.
     */
     void setJunctions(JSONObject allJunctionObjects) {
-        this.junctions = new Junction[getNumOfJunctions()];
+        this.junctions = new Junction[this.numOfJunctions];
         
         // Fetching each junction from all Junctions object
         for(int i=0; i<numOfJunctions; i++)
@@ -171,7 +171,7 @@ public class SimulationManager {
      */
     void setRunningScenario(JSONObject scenarioObject) {
         
-        int[] junctionsAllowence = new int[this.getNumOfJunctions()];
+        int[] junctionsAllowence = new int[this.numOfJunctions];
 
             for(int x=0; x<numOfJunctions; x++){
                 char junctionLetter = (char) ('A'+ x);
@@ -186,16 +186,6 @@ public class SimulationManager {
             this.runningScenario = Scenario.createInstance(junctionsAllowence, north, east, south);
     }
 
-    void setNumOfCarParks(int numOfCarParks) {
-        this.numOfCarParks = numOfCarParks;
-    }
-    void setNumOfJunctions(int numOfJunctions) {
-        this.numOfJunctions = numOfJunctions;
-    }
-    void setNumOfScenarios(int numOfScenarios) {
-        this.numOfScenarios = numOfScenarios;
-    }
-
     // Getters 
     public CarPark[] getCarParks() {
         return carParks;
@@ -208,15 +198,6 @@ public class SimulationManager {
     }
     public Junction[] getJunctions() {
         return junctions;
-    }
-    public int getNumOfCarParks() {
-        return numOfCarParks;
-    }
-    public int getNumOfJunctions() {
-        return numOfJunctions;
-    }
-    public int getNumOfScenarios() {
-        return numOfScenarios;
     }
     public Scenario getRunningScenario() {
         return runningScenario;
