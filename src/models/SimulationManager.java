@@ -25,7 +25,16 @@ public class SimulationManager {
     void loadData(){}
 
     // To validate the scenario input
-    static void validateScenarioInput(int scenarioInput){}
+    static void validateScenarioInput(int scenarioInput){
+        if(scenarioInput<1 || scenarioInput>5)
+        {
+            System.err.println("\nError: Invalid scenario input!");
+            System.err.println("The entered scenario index '" + scenarioInput + "' is out of range.");
+            System.err.println("Please provide a valid scenario index between 1 and 5.");
+            System.exit(1);
+        }
+        return;
+    }
 
     // Setters
     void setCarParks(CarPark[] carParks) {
