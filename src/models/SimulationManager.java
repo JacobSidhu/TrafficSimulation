@@ -76,13 +76,14 @@ public class SimulationManager {
     }
 
     // To validate the scenario input
-    static void validateScenarioInput(int scenarioInput){
-        if(scenarioInput<1 || scenarioInput>5)
+    void validateScenarioInput(int scenarioInput){
+        if(scenarioInput<this.DEFAULT_SCENARIO || scenarioInput>this.numOfScenarios)
         {
             System.err.println("\nError: Invalid scenario input!");
             System.err.println("The entered scenario index '" + scenarioInput + "' is out of range.");
             System.err.println("Please provide a valid scenario index between 1 and 5.");
-            System.exit(1);
+            final int EXIT_CODE = 1;
+            System.exit(EXIT_CODE);
         }
         return;
     }
