@@ -1,5 +1,7 @@
 package models;
 
+import org.json.simple.JSONObject;
+
 //The TrafficManager class is responsible for managing the loading of data into
 //simulation objects and handling the console output for data presentation.
 
@@ -43,13 +45,35 @@ public class SimulationManager {
     void setCarParks(CarPark[] carParks) {
         this.carParks = carParks;
     }
-    
+
     void setJunctions(Junction[] junctions) {
         this.junctions = junctions;
     }
 
-    void setRunningScenario(Scenario runningScenario) {
-        this.runningScenario = runningScenario;
+    /**
+     * Configures the current simulation scenario using data from a JSON object.
+     *
+     * @param scenarioObject A JSONObject containing scenario data with junction allowances
+     *                       and vehicle entry points.
+     *       
+     * Sets up junction allowances and entry point capacities, creating a new 
+     * `runningScenario` instance based on these values.
+     */
+    void setRunningScenario(JSONObject scenarioObject) {
+        
+        int[] junctionsAllowence = new int[this.getNumOfJunctions()];
+
+            for(int x=0; x<numOfJunctions; x++){
+                char junctionLetter = (char) ('A'+ x);
+                JSONObject junctions = (JSONObject) scenarioObject.get("junctions");
+                JSONObject eachJunction = (JSONObject) junctions.get("junction"+junctionLetter);
+                junctionsAllowence[x] = ((Long) eachJunction.get("allowence")).intValue();
+            }
+            JSONObject entryPoints = (JSONObject) scenarioObject.get("entryPoints");
+            int north = ((Long) entryPoints.get("north")).intValue();
+            int east = ((Long) entryPoints.get("east")).intValue();
+            int south =  ((Long) entryPoints.get("south")).intValue();
+            this.runningScenario = Scenario.createInstance(junctionsAllowence, north, east, south);
     }
 
     void setNumOfCarParks(int numOfCarParks) {
