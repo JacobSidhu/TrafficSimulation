@@ -43,8 +43,27 @@ public class SimulationManager {
     }
 
     // Setters
-    void setCarParks(CarPark[] carParks) {
-        this.carParks = carParks;
+
+    /**
+     * Initializes car parks in the simulation using data from a JSON object.
+     *
+     * @param allCarParkObject A JSONObject containing data for each car park.
+     *                         
+     * This method sets up each car park instance with its name and available spaces, 
+     * storing them in the carParks array.
+     */
+    public void setCarParks(JSONObject allCarParkObject) {
+
+        this.carParks = new CarPark[this.getNumOfCarParks()];
+
+        for(int i=0; i<getNumOfCarParks(); i++)
+        {
+            CarPark tempInstance = new CarPark();
+            JSONObject eachCarParkObject = (JSONObject) allCarParkObject.get("carPark"+(i+1));
+            String carParkName = (String) eachCarParkObject.get("carParkName");
+            int spaces = ((Long) eachCarParkObject.get("spaces")).intValue();
+            this.carParks[i] = tempInstance.createInstance(carParkName, spaces);
+        }
     }
 
     /**
