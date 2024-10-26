@@ -24,6 +24,9 @@ public class SimulationManager {
     // This loadData method fetch data from data.json file
     void loadData(){}
 
+    // To validate the scenario input
+    static void validateScenarioInput(int scenarioInput){}
+
     // Setters
     void setCarParks(CarPark[] carParks) {
         this.carParks = carParks;
