@@ -43,9 +43,15 @@ public class SimulationManager {
     void setCarParks(CarPark[] carParks) {
         this.carParks = carParks;
     }
+    
     void setJunctions(Junction[] junctions) {
         this.junctions = junctions;
     }
+
+    void setRunningScenario(Scenario runningScenario) {
+        this.runningScenario = runningScenario;
+    }
+
     void setNumOfCarParks(int numOfCarParks) {
         this.numOfCarParks = numOfCarParks;
     }
@@ -54,9 +60,6 @@ public class SimulationManager {
     }
     void setNumOfScenarios(int numOfScenarios) {
         this.numOfScenarios = numOfScenarios;
-    }
-    void setRunningScenario(Scenario runningScenario) {
-        this.runningScenario = runningScenario;
     }
 
     // Getters 
