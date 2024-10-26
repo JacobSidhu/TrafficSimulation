@@ -1,7 +1,12 @@
 package models;
 
+import java.io.FileReader;
+import java.io.IOException;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 //The TrafficManager class is responsible for managing the loading of data into
 //simulation objects and handling the console output for data presentation.
@@ -27,8 +32,48 @@ public class SimulationManager {
         System.out.flush();
     }
 
-    // This loadData method fetch data from data.json file
-    void loadData(){}
+    /**
+     * Loads simulation data from a JSON file and initializes various components
+     * such as scenarios, junctions, and car parks based on the specified scenario index.
+     *
+     * @param scenarioIndex The index of the scenario to load, which corresponds to
+     *                      the scenario key in the JSON object (e.g., "scenario1").
+     * 
+     * This method performs the following actions:
+     * <ul>
+     *     <li>Parses the JSON file specified by the dataFilePath.</li>
+     *     <li>Retrieves the number of junctions, scenarios, and car parks from the JSON object.</li>
+     *     <li>Loads the specified scenario and initializes the corresponding junctions and car parks.</li>
+     * </ul>
+     *
+     * @throws IOException If an I/O error occurs while reading the file.
+     * @throws ParseException If the JSON content cannot be parsed.
+     */
+    void loadData(int scenarioIndex)
+    {
+        JSONParser parser = new JSONParser();
+
+        try (FileReader fileReader = new FileReader(this.DATA_FILE_PATH))
+        {
+            JSONObject jsonObject = (JSONObject) parser.parse(fileReader);
+            JSONObject allScenarios = (JSONObject) jsonObject.get("scenarios");
+            JSONObject specificScenario = (JSONObject) allScenarios.get("scenario"+scenarioIndex);
+            JSONObject allJunctions = (JSONObject) jsonObject.get("junctions");
+            JSONObject allCarParkObject = (JSONObject) jsonObject.get("carParks");
+            
+            setNumOfJunctions(((Long) allJunctions.get("numOfJunctions")).intValue());
+            setNumOfScenarios(((Long) allScenarios.get("numOfScenarios")).intValue());
+            setNumOfCarParks(((Long) allCarParkObject.get("numOfCarParks")).intValue());
+
+            setRunningScenario(specificScenario);
+            setJunctions(allJunctions);
+            setCarParks(allCarParkObject);
+            
+        }
+        catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+    }
 
     // To validate the scenario input
     static void validateScenarioInput(int scenarioInput){
