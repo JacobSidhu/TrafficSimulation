@@ -191,12 +191,6 @@ public class SimulationManager {
     public CarPark[] getCarParks() {
         return carParks;
     }
-    public String getDATA_FILE_PATH() {
-        return DATA_FILE_PATH;
-    }
-    public int getDEFAULT_SCENARIO() {
-        return DEFAULT_SCENARIO;
-    }
     public Junction[] getJunctions() {
         return junctions;
     }
