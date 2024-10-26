@@ -19,7 +19,10 @@ public class SimulationManager {
     public static void start(int scenario){}
 
     // Function to clear Console
-    void clearConsole(){}
+    void clearConsole(){
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
 
     // This loadData method fetch data from data.json file
     void loadData(){}
