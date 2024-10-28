@@ -1,7 +1,5 @@
 package models;
 
-import rough.Vehicle;
-
 // This file contains Road Class that represents blueprint for roads used in
 // in the traffic Simulation.
 
@@ -31,7 +29,7 @@ public class Road {
     }
 
     // Methods
-    public void addVehicleIntoRoad(){}
+    public synchronized void addVehicleIntoRoad(Vehicle car){}
     public Vehicle getVehicleFromRoad(){}
     public boolean isSpaceAvailable(){}
     public boolean isEntryAllowed(){}
